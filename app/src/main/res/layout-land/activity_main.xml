@@ -29,7 +29,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:id="@+id/data"
         android:layout_marginTop="19dp"
-        android:layout_marginLeft="290dp"
+        android:layout_marginLeft="200dp"
         android:ellipsize="marquee"
         android:fadingEdge="horizontal"
         android:marqueeRepeatLimit="marquee_forever"
