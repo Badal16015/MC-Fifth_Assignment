@@ -1,5 +1,6 @@
 package com.example.badal.fifth_assign;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -50,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public class BackgroundTask extends AsyncTask<Void,Void,Void>{
+    public class BackgroundTask extends AsyncTask<Void,String,Void>{
         String result;
 
         @Override
@@ -68,10 +69,19 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
+            Toast toast = Toast.makeText(getApplicationContext(), "Download Complete", Toast.LENGTH_SHORT);
+            toast.show();
             nresult=result.substring(0,22);
             resultext.setText(nresult);
-            System.out.println(nresult);
+            System.out.println(result);
 
         }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+
     }
 }
