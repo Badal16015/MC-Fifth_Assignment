@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
     public class BackgroundTask extends AsyncTask<Void,String,Void>{
         String result;
+        ProgressDialog progressDialog;
 
         @Override
         protected Void doInBackground(Void... voids) {
@@ -68,17 +69,24 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(Void aVoid) {
-            super.onPostExecute(aVoid);
+
+            progressDialog.hide();
             Toast toast = Toast.makeText(getApplicationContext(), "Download Complete", Toast.LENGTH_SHORT);
             toast.show();
             nresult=result.substring(0,22);
             resultext.setText(nresult);
             System.out.println(result);
-
+            super.onPostExecute(aVoid);
         }
 
         @Override
         protected void onPreExecute() {
+            progressDialog = new ProgressDialog(MainActivity.this);
+            progressDialog.setTitle("Download in Progress");
+            progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+            progressDialog.setIndeterminate(true);
+            progressDialog.setProgress(0);
+            progressDialog.show();
             super.onPreExecute();
         }
 
